@@ -8,7 +8,7 @@ index = -1
 for job in jobs:
     index += 1 # index 이동
     if index + job[0] > n:
-        dp[index] = dp[index-1]
+        # dp[index] = dp[index-1]
         break # 날짜 넘어가면 break 처리
 
     time = [False for _ in range (n)]
@@ -33,11 +33,12 @@ for job in jobs:
         if isConflict != True:
             mergeIndex = j
             break
-    
+    # print("merge:", mergeIndex)
+
     for i in range (index, index + job[0]):
         if isConflict == False:
-            dp[i] = max(dp[i], job[1], dp[mergeIndex] + job[1])
+            dp[i] = max(dp[i-1], dp[i], job[1], dp[mergeIndex] + job[1])
         else:
-            dp[i] = max(dp[i], job[1])
-    
+            dp[i] = max(dp[i-1], dp[i], job[1])
+      
 print(dp[n-1])
