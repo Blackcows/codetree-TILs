@@ -10,6 +10,8 @@ for i in range(coins[0], m+1):
     for coin in coins:
         if i - coin < 0:
             continue
+        if dp[i-coin] == 0:
+            continue
         
         dp[i] = max(dp[i], dp[i-coin] + 1)
 
