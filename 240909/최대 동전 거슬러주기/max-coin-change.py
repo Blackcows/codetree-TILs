@@ -2,7 +2,7 @@ n, m = map(int, input().split())
 coins = list(map(int, input().split()))
 coins.sort()
 
-dp = [0 for _ in range(m+1)]
+dp = [0 for _ in range(10001)]
 for coin in coins:
     dp[coin] = 1
 
